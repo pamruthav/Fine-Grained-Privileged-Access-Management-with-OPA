@@ -1,0 +1,46 @@
+[
+    {
+        "email": "Jetevapevahu.4zfehe3f4y@randommail.org",
+        "name": "Jetevapevahu",
+        "roles": [
+            "User",
+            "Moderator"
+        ]
+    },
+    {
+        "email": "Goreracufirayolifo.scsdsr29hu@example.com",
+        "name": "Goreracufirayolifo",
+        "roles": [
+            "Moderator",
+            "Admin"
+        ]
+    },
+    {
+        "email": "Xisarigixiwoya.7bir4qe1ao@mailservice.net",
+        "name": "Xisarigixiwoya",
+        "roles": [
+            "Moderator",
+            "Admin"
+        ]
+    },
+    {
+        "email": "Fizakejejijasu.ohue9u5llz@example.com",
+        "name": "Fizakejejijasu",
+        "roles": [
+            "Moderator",
+            "Guest",
+            "Admin",
+            "User"
+        ]
+    },
+    {
+        "email": "Qetupolobiwizi.lprhj0uzu8@randommail.org",
+        "name": "Qetupolobiwizi",
+        "roles": [
+            "Moderator",
+            "Admin",
+            "User",
+            "Guest"
+        ]
+    }
+]
