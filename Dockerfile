@@ -1,6 +1,15 @@
 FROM kong/kong-gateway:3.2.2.1
 
-USER root
-RUN mkdir -p /usr/share/lua/5.1/kong/plugins/auth-opa
 
-COPY ./auth-opa /usr/share/lua/5.1/kong/plugins/auth-opa
+USER root
+RUN apt update -y 
+RUN apt install git unzip build-essential libpq-dev -y
+
+# RUN luarocks install luasql-postgres PGSQL_DIR=/usr/include/postgresql/
+RUN luarocks install luasql-postgres PGSQL_INCDIR=/usr/include/postgresql PGSQL_LIBDIR=/usr/lib/postgresql
+RUN luarocks install lua-cjson
+RUN luarocks install lua-resty-redis
+RUN mkdir -p /usr/local/share/lua/5.1/kong/plugins/authopa
+
+COPY ./authopa /usr/local/share/lua/5.1/kong/plugins/authopa
+             

@@ -7,16 +7,19 @@ services:
     routes:
       - name: test-route
         paths:
-          - /test
+          - /demo
+
     plugins:
-      - name: auth-opa
+      - name: authopa
+        enabled: true
         config:
-          redis_host: "localhost"
-          redis_port: 6379
+          redis:
+            host: "redis"
+            port: 6379
+            ttl: 10
           postgres:
             user: "postgres"
             password: "password"
-            host: "172.22.0.3"
-        redis_ttl: 10
-        enabled: true
-    
+            host: "postgres"
+            port: 5432
+  
