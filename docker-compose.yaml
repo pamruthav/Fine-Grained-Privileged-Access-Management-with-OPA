@@ -76,7 +76,7 @@ services:
       - KONG_LOG_LEVEL=debug
       - KONG_PLUGINS=bundled,authopa
       - KONG_ADMIN_GUI_URL=http://localhost:8002
-      - KONG_LICENSE_DATA='{"license":{"payload":{"admin_seats":"5","customer":"automation","dataplanes":"100","license_creation_date":"2023-07-02","license_expiration_date":"2023-08-20","license_key":"ASDASDASDASDASDASDASDASDASD_a1VASASD","product_subscription":"Konnect Enterprise","support_plan":"None"},"signature":"ebbbb362a98c04c21d92e575e2581d6da5d5d14c85c30a4f5d8c09227ff6fd343ecbcfad1e82b1a479c184c58212572a12e69d46a189782933247a13950dbbd1","version":"1"}}'
+      - KONG_LICENSE_DATA= #insertLicence
     container_name: kong-demo
     networks:
       - defaultnw
