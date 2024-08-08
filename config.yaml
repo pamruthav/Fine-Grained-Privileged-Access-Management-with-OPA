@@ -1,0 +1,25 @@
+_format_version: "2.1"
+_transform: true
+
+services:
+  - name: test
+    url: https://mockbin.org
+    routes:
+      - name: test-route
+        paths:
+          - /demo
+
+    plugins:
+      - name: authopa
+        enabled: true
+        config:
+          redis:
+            host: "redis"
+            port: 6379
+            ttl: 10
+          postgres:
+            user: "postgres"
+            password: "password"
+            host: "postgres"
+            port: 5432
+  
