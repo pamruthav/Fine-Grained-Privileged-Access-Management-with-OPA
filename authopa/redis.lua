@@ -2,8 +2,11 @@ local redis = require "resty.redis"
 local cjson = require "cjson.safe"
 
 local module = {}
+<<<<<<< HEAD
 local cjson = require "cjson"
 
+=======
+>>>>>>> b24d1d77c78659ffe1fd7978439dcc0a8a8428bd
 function module.performRedisLookup(email, plugin_config)
     local redis_conn = redis:new()
     local ok, err = redis_conn:connect(plugin_config.redis.host, plugin_config.redis.port)
@@ -11,6 +14,7 @@ function module.performRedisLookup(email, plugin_config)
         kong.log.err("!$!Failed to connect to Redis!$!: ", err)
         return
     else
+<<<<<<< HEAD
         local res, err = redis_conn:get(email)
         if not res then
             kong.log.err("Failed to fetch data from Redis: ", err)
@@ -29,6 +33,15 @@ function module.performRedisLookup(email, plugin_config)
 end
 
 
+=======
+        local res, err = redis_conn:getex(email)
+        kong.log.info("Redis result: ", res)
+        redis_conn:close()
+        return res
+    end
+end
+
+>>>>>>> b24d1d77c78659ffe1fd7978439dcc0a8a8428bd
 function module.cacheRolesInRedis(email, userRoles, plugin_config)
     local redis_conn = redis:new()
     local ok, err = redis_conn:connect(plugin_config.redis.host, plugin_config.redis.port)
@@ -50,4 +63,8 @@ function module.cacheRolesInRedis(email, userRoles, plugin_config)
     end
 end
 
+<<<<<<< HEAD
 return module
+=======
+return module
+>>>>>>> b24d1d77c78659ffe1fd7978439dcc0a8a8428bd

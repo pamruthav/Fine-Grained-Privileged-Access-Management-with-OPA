@@ -3,7 +3,11 @@ _transform: true
 
 services:
   - name: test
+<<<<<<< HEAD
     url: https://httpbin.org
+=======
+    url: https://mockbin.org
+>>>>>>> b24d1d77c78659ffe1fd7978439dcc0a8a8428bd
     routes:
       - name: test-route
         paths:
