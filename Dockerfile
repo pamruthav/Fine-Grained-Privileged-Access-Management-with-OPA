@@ -1,11 +1,9 @@
-FROM kong/kong-gateway:3.2.2.1
-
+FROM kong/kong-gateway:latest
 
 USER root
 RUN apt update -y 
 RUN apt install git unzip build-essential libpq-dev -y
 
-# RUN luarocks install luasql-postgres PGSQL_DIR=/usr/include/postgresql/
 RUN luarocks install luasql-postgres PGSQL_INCDIR=/usr/include/postgresql PGSQL_LIBDIR=/usr/lib/postgresql
 RUN luarocks install lua-cjson
 RUN luarocks install lua-resty-redis

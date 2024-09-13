@@ -40,30 +40,8 @@ function module.fetchRolesFromPostgres(email, plugin_config)
     cursor:close()
     pg_conn:close()
 
-    kong.log.info("fetched roles: ", table.concat(roles, ", "))
+    kong.log.info("Fetched roles: ", table.concat(roles, ", "))
     return roles
 
-    -- local user = {roles = {}}
-
-    -- local row = cursor:fetch({}, "a")
-    -- cursor:close()
-    -- pg_conn:close()
-    -- kong.log.info("fetched row", row.roles)
-    -- return row.roles
 end
 return module
-
-
--- CREATE TABLE user_data (
---     id SERIAL PRIMARY KEY,
---     email VARCHAR(255) NOT NULL,
---     name VARCHAR(255) NOT NULL,
---     roles JSONB
--- );
--- INSERT INTO user_data (email, name, roles)
--- VALUES                    
---     ('amu@test.com', 'Wagezawulico', '["User"]'),
---     ('Ciguruhumoxavezuviwu.4lgipcs5z7@testmail.com', 'Ciguruhumoxavezuviwu', '["Admin", "Guest", "Moderator", "User"]'),
---     ('Zabumutinolulo.dmwt1pn2pz@testmail.com', 'Zabumutinolulo', '["Moderator", "Admin", "User"]'),
---     ('Wisoqevicocohewila.4pv1rm3o71@mailservice.net', 'Wisoqevicocohewila', '["Admin", "User"]'),
---     ('Xutawimufusiqelo.r1uzurdxpm@testmail.com', 'Xutawimufusiqelo', '["Admin"]');

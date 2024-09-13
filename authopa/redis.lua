@@ -2,6 +2,8 @@ local redis = require "resty.redis"
 local cjson = require "cjson.safe"
 
 local module = {}
+local cjson = require "cjson"
+
 function module.performRedisLookup(email, plugin_config)
     local redis_conn = redis:new()
     local ok, err = redis_conn:connect(plugin_config.redis.host, plugin_config.redis.port)
@@ -9,12 +11,23 @@ function module.performRedisLookup(email, plugin_config)
         kong.log.err("!$!Failed to connect to Redis!$!: ", err)
         return
     else
-        local res, err = redis_conn:getex(email)
+        local res, err = redis_conn:get(email)
+        if not res then
+            kong.log.err("Failed to fetch data from Redis: ", err)
+            return nil
+        elseif res == ngx.null then
+            kong.log.err("No data found in Redis for key: ", email)
+            return nil
+        end
+        
         kong.log.info("Redis result: ", res)
+        
+        local decoded_res, decode_err = cjson.decode(res)
         redis_conn:close()
-        return res
+        return decoded_res
     end
 end
+
 
 function module.cacheRolesInRedis(email, userRoles, plugin_config)
     local redis_conn = redis:new()
