@@ -1,6 +1,7 @@
 docker stop kong-demo
 docker rm kong-demo
 docker-compose down -v
+
 docker-compose build
 docker-compose up -d
 
